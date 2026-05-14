@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cv8cnmqqrxj7p"]
+
+[ext_resource type="PackedScene" uid="uid://cd6hdnsq2soad" path="res://Escenas/Tuberia.tscn" id="1_asaf2"]
+[ext_resource type="Script" uid="uid://5xxcfjhavur7" path="res://Escenas/tubertias.gd" id="1_jlyym"]
+
+[node name="Node2D" type="Node2D" unique_id=640244964]
+position = Vector2(32, 400)
+script = ExtResource("1_jlyym")
+metadata/_edit_group_ = true
+
+[node name="tuberia_abajo" parent="." unique_id=1523971242 instance=ExtResource("1_asaf2")]
+position = Vector2(0, 224)
+
+[node name="tuberia_arriba" parent="." unique_id=1016348580 instance=ExtResource("1_asaf2")]
+position = Vector2(0, -224)
+rotation = 3.1415927
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=1635476438]
+
+[connection signal="body_entered" from="tuberia_abajo" to="." method="_choque_con_pajaro"]
+[connection signal="body_entered" from="tuberia_arriba" to="." method="_choque_con_pajaro"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="fuera_de_la_pantalla"]

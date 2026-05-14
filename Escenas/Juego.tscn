@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://byeyvdcc5c74t"]
+
+[ext_resource type="Script" uid="uid://b838xmb2tasui" path="res://Escenas/juego.gd" id="1_a5pd0"]
+[ext_resource type="Texture2D" uid="uid://bju1rok04bpcg" path="res://Assets/Flappy_Bird_assets by kosresetr55/Game Objects/background-day.png" id="1_opsjl"]
+[ext_resource type="PackedScene" uid="uid://da0j7qjc2apa" path="res://Escenas/Pajarito.tscn" id="1_tourb"]
+[ext_resource type="PackedScene" uid="uid://cv8cnmqqrxj7p" path="res://Escenas/Tubertias.tscn" id="2_q5ubt"]
+[ext_resource type="Texture2D" uid="uid://cs0hrab56o38x" path="res://Assets/Flappy_Bird_assets by kosresetr55/Game Objects/base.png" id="2_w4ft7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tourb"]
+size = Vector2(336, 60)
+
+[node name="Node2D" type="Node2D" unique_id=322467164]
+script = ExtResource("1_a5pd0")
+escena_tuberias = ExtResource("2_q5ubt")
+
+[node name="ParallaxBackground" type="Parallax2D" parent="." unique_id=998173647]
+repeat_size = Vector2(288, 0)
+autoscroll = Vector2(-30, 0)
+
+[node name="BackgroundDay" type="Sprite2D" parent="ParallaxBackground" unique_id=1862200624]
+position = Vector2(149, 259)
+texture = ExtResource("1_opsjl")
+metadata/_edit_group_ = true
+
+[node name="ParallaxBase" type="Parallax2D" parent="." unique_id=920749673]
+scroll_offset = Vector2(5, 0)
+repeat_size = Vector2(336, 0)
+autoscroll = Vector2(-60, 0)
+
+[node name="Base" type="Sprite2D" parent="ParallaxBase" unique_id=1685961762]
+z_index = 20
+position = Vector2(163, 458)
+texture = ExtResource("2_w4ft7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBase/Base" unique_id=932238236]
+position = Vector2(0, -23)
+shape = SubResource("RectangleShape2D_tourb")
+
+[node name="Pajarito" parent="." unique_id=480375858 instance=ExtResource("1_tourb")]
+position = Vector2(112, 256)
+
+[node name="Timer" type="Timer" parent="." unique_id=1562976465]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
