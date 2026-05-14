@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://cd6hdnsq2soad" path="res://Escenas/Tuberia.tscn" id="1_asaf2"]
 [ext_resource type="Script" uid="uid://5xxcfjhavur7" path="res://Escenas/tubertias.gd" id="1_jlyym"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlyym"]
+size = Vector2(21, 136)
+
 [node name="Node2D" type="Node2D" unique_id=640244964]
 position = Vector2(32, 400)
 script = ExtResource("1_jlyym")
@@ -15,8 +18,18 @@ position = Vector2(0, 224)
 position = Vector2(0, -224)
 rotation = 3.1415927
 
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=1635476438]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=529732898]
+position = Vector2(67, 0)
+enable_node_path = NodePath("../tuberia_abajo")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1161112678]
+position = Vector2(48, -4)
+
+[node name="punto" type="CollisionShape2D" parent="Area2D" unique_id=752557080]
+position = Vector2(-10.5, 0)
+shape = SubResource("RectangleShape2D_jlyym")
 
 [connection signal="body_entered" from="tuberia_abajo" to="." method="_choque_con_pajaro"]
 [connection signal="body_entered" from="tuberia_arriba" to="." method="_choque_con_pajaro"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="fuera_de_la_pantalla"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="fuera_de_la_pantalla"]
+[connection signal="body_entered" from="Area2D" to="." method="_pajaro_punto"]
