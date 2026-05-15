@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cv8cnmqqrxj7p" path="res://Escenas/Tubertias.tscn" id="2_q5ubt"]
 [ext_resource type="Texture2D" uid="uid://cs0hrab56o38x" path="res://Assets/Flappy_Bird_assets by kosresetr55/Game Objects/base.png" id="2_w4ft7"]
 [ext_resource type="PackedScene" uid="uid://dtmgbaeuxmyc2" path="res://Escenas/puntaje.tscn" id="3_pbjfh"]
+[ext_resource type="PackedScene" uid="uid://bicgl35ijilir" path="res://Escenas/game_over.tscn" id="7_fl6nd"]
+[ext_resource type="Script" uid="uid://00gnswh764qt" path="res://Scripts/game_over.gd" id="8_kcoml"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tourb"]
 size = Vector2(336, 60)
@@ -35,14 +37,23 @@ z_index = 20
 position = Vector2(163, 458)
 texture = ExtResource("2_w4ft7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBase/Base" unique_id=932238236]
-position = Vector2(0, -23)
-shape = SubResource("RectangleShape2D_tourb")
-
 [node name="Pajarito" parent="." unique_id=480375858 instance=ExtResource("1_tourb")]
+z_index = 20
 position = Vector2(112, 256)
 
 [node name="Timer" type="Timer" parent="." unique_id=1562976465]
 wait_time = 2.0
 
+[node name="CanvasLayerGameOver" parent="." unique_id=1833072191 instance=ExtResource("7_fl6nd")]
+visible = false
+script = ExtResource("8_kcoml")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=375959897]
+position = Vector2(-331, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=932238236]
+position = Vector2(491, 432)
+shape = SubResource("RectangleShape2D_tourb")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_suelo_body_entered"]

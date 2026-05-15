@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bicgl35ijilir"]
+
+[ext_resource type="Texture2D" uid="uid://ddlibgow8idwc" path="res://Assets/Flappy_Bird_assets by kosresetr55/UI/gameover.png" id="1_mkivq"]
+
+[node name="CanvasLayerGameOver" type="CanvasLayer" unique_id=1833072191]
+
+[node name="Gameover" type="Sprite2D" parent="." unique_id=1829447341]
+position = Vector2(136, 272)
+texture = ExtResource("1_mkivq")
+metadata/_edit_group_ = true

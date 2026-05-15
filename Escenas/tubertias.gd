@@ -19,10 +19,10 @@ func fuera_de_la_pantalla() -> void:
 
 func _choque_con_pajaro(body: Node2D) -> void:
 	if body is Pajaro:
-		print('Choco el pajaro!')
+		Global.game_over() 
 
 
 func _pajaro_punto(body: Node2D) -> void:
 	if body is Pajaro:
 		Global.sumar_punto()
-		
+		$Timer.stop()
