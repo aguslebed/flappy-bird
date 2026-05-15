@@ -5,7 +5,7 @@ var velocidad = 150
 func _ready() -> void:
 	position.x = 320
 	z_index = 10
-	position.y = randi_range(120, 400)
+	position.y = randi_range(100, 330)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,4 +24,5 @@ func _choque_con_pajaro(body: Node2D) -> void:
 
 func _pajaro_punto(body: Node2D) -> void:
 	if body is Pajaro:
-		print('suma punto')
+		Global.sumar_punto()
+		
