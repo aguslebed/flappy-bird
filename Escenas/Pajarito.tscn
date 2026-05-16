@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bj6wj00q0w4c6" path="res://Assets/Flappy_Bird_assets by kosresetr55/Game Objects/yellowbird-downflap.png" id="1_xu1p1"]
 [ext_resource type="Texture2D" uid="uid://dbjyuxj43w830" path="res://Assets/Flappy_Bird_assets by kosresetr55/Game Objects/yellowbird-midflap.png" id="2_ttvpy"]
 [ext_resource type="Texture2D" uid="uid://caa04xlh0l53l" path="res://Assets/Flappy_Bird_assets by kosresetr55/Game Objects/yellowbird-upflap.png" id="3_1rglp"]
+[ext_resource type="AudioStream" uid="uid://do3tlvbcukfhu" path="res://Assets/Flappy_Bird_assets by kosresetr55/Sound Efects/wing.wav" id="5_1rglp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wiax1"]
 animations = [{
@@ -35,3 +36,6 @@ frame_progress = 0.8201871
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1885580945]
 shape = SubResource("CircleShape2D_xu1p1")
+
+[node name="AudioSalto" type="AudioStreamPlayer" parent="." unique_id=1942944684]
+stream = ExtResource("5_1rglp")
